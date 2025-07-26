@@ -1,0 +1,563 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Tour Booking Website
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+ </head>
+ <body class="bg-gray-50 text-gray-800">
+  <!-- Header / Navbar -->
+  <header class="bg-white shadow-md fixed w-full z-30">
+   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a class="text-2xl font-bold text-indigo-600" href="#">
+     Tourify
+    </a>
+    <nav class="hidden md:flex space-x-8 font-semibold text-gray-700">
+     <a class="hover:text-indigo-600 transition" href="#">
+      Home
+     </a>
+     <a class="hover:text-indigo-600 transition" href="#">
+      Destinations
+     </a>
+     <a class="hover:text-indigo-600 transition" href="#">
+      Tours
+     </a>
+     <a class="hover:text-indigo-600 transition" href="#">
+      About Us
+     </a>
+     <a class="hover:text-indigo-600 transition" href="#">
+      Contact
+     </a>
+    </nav>
+    <div class="hidden md:flex space-x-4">
+     <button class="text-indigo-600 font-semibold border border-indigo-600 px-4 py-2 rounded hover:bg-indigo-600 hover:text-white transition">
+      Login
+     </button>
+     <button class="bg-indigo-600 text-white font-semibold px-4 py-2 rounded hover:bg-indigo-700 transition">
+      Sign Up
+     </button>
+    </div>
+    <button class="md:hidden text-gray-700 focus:outline-none" id="mobile-menu-button">
+     <i class="fas fa-bars fa-lg">
+     </i>
+    </button>
+   </div>
+   <!-- Mobile Menu -->
+   <nav class="hidden md:hidden bg-white shadow-md" id="mobile-menu">
+    <a class="block px-6 py-3 border-b border-gray-200 font-semibold text-gray-700 hover:bg-indigo-50" href="#">
+     Home
+    </a>
+    <a class="block px-6 py-3 border-b border-gray-200 font-semibold text-gray-700 hover:bg-indigo-50" href="#">
+     Destinations
+    </a>
+    <a class="block px-6 py-3 border-b border-gray-200 font-semibold text-gray-700 hover:bg-indigo-50" href="#">
+     Tours
+    </a>
+    <a class="block px-6 py-3 border-b border-gray-200 font-semibold text-gray-700 hover:bg-indigo-50" href="#">
+     About Us
+    </a>
+    <a class="block px-6 py-3 font-semibold text-gray-700 hover:bg-indigo-50" href="#">
+     Contact
+    </a>
+    <div class="flex flex-col px-6 py-4 space-y-3 border-t border-gray-200">
+     <button class="text-indigo-600 font-semibold border border-indigo-600 px-4 py-2 rounded hover:bg-indigo-600 hover:text-white transition">
+      Login
+     </button>
+     <button class="bg-indigo-600 text-white font-semibold px-4 py-2 rounded hover:bg-indigo-700 transition">
+      Sign Up
+     </button>
+    </div>
+   </nav>
+  </header>
+  <main class="pt-24 max-w-7xl mx-auto px-6">
+   <!-- Hero Section -->
+   <section class="relative bg-indigo-600 rounded-lg overflow-hidden shadow-lg mb-16">
+    <img alt="Beautiful tropical beach with palm trees and sunset over the ocean" class="w-full h-64 sm:h-96 object-cover" height="500" src="https://storage.googleapis.com/a1aa/image/a27608d6-8d73-4ae1-024f-8fa8a353047a.jpg" width="1200"/>
+    <div class="absolute inset-0 bg-indigo-900 bg-opacity-50 flex flex-col justify-center items-center text-center px-6">
+     <h1 class="text-4xl sm:text-5xl font-extrabold text-white mb-4 drop-shadow-lg">
+      Explore the World with Tourify
+     </h1>
+     <p class="text-lg sm:text-xl text-indigo-200 max-w-3xl mb-8 drop-shadow-md">
+      Discover amazing destinations, book your dream tours, and create unforgettable memories.
+     </p>
+     <a class="inline-block bg-yellow-400 text-indigo-900 font-bold px-8 py-3 rounded shadow-lg hover:bg-yellow-300 transition" href="#tours">
+      Browse Tours
+     </a>
+    </div>
+   </section>
+   <!-- Search Booking Form -->
+   <section class="bg-white rounded-lg shadow-md p-6 mb-16">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">
+     Book Your Tour
+    </h2>
+    <form class="grid grid-cols-1 md:grid-cols-4 gap-6">
+     <div>
+      <label class="block text-gray-700 font-semibold mb-2" for="destination">
+       Destination
+      </label>
+      <select class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" id="destination" name="destination">
+       <option disabled="" selected="" value="">
+        Select destination
+       </option>
+       <option value="paris">
+        Paris, France
+       </option>
+       <option value="bali">
+        Bali, Indonesia
+       </option>
+       <option value="newyork">
+        New York, USA
+       </option>
+       <option value="tokyo">
+        Tokyo, Japan
+       </option>
+       <option value="sydney">
+        Sydney, Australia
+       </option>
+      </select>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-2" for="date">
+       Travel Date
+      </label>
+      <input class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" id="date" name="date" type="date"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-2" for="guests">
+       Guests
+      </label>
+      <select class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" id="guests" name="guests">
+       <option value="1">
+        1 Guest
+       </option>
+       <option selected="" value="2">
+        2 Guests
+       </option>
+       <option value="3">
+        3 Guests
+       </option>
+       <option value="4">
+        4 Guests
+       </option>
+       <option value="5">
+        5 Guests
+       </option>
+       <option value="6">
+        6 Guests
+       </option>
+      </select>
+     </div>
+     <div class="flex items-end">
+      <button class="w-full bg-indigo-600 text-white font-semibold rounded px-6 py-3 hover:bg-indigo-700 transition" type="submit">
+       Search Tours
+      </button>
+     </div>
+    </form>
+   </section>
+   <!-- Popular Destinations -->
+   <section class="mb-16">
+    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+     Popular Destinations
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+      <img alt="Eiffel Tower in Paris France with blue sky and tourists" class="w-full h-48 object-cover" height="250" src="https://storage.googleapis.com/a1aa/image/93b23506-47bd-4bba-54c7-460b19bbe1e2.jpg" width="400"/>
+      <div class="p-4">
+       <h3 class="text-xl font-semibold text-gray-800 mb-2">
+        Paris, France
+       </h3>
+       <p class="text-gray-600">
+        The city of lights, romance, and iconic landmarks.
+       </p>
+      </div>
+     </div>
+     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+      <img alt="Tropical beach in Bali Indonesia with turquoise water and palm trees" class="w-full h-48 object-cover" height="250" src="https://storage.googleapis.com/a1aa/image/687854b8-4ab6-445c-6bbe-fb299b9853c6.jpg" width="400"/>
+      <div class="p-4">
+       <h3 class="text-xl font-semibold text-gray-800 mb-2">
+        Bali, Indonesia
+       </h3>
+       <p class="text-gray-600">
+        Exotic beaches, vibrant culture, and lush landscapes.
+       </p>
+      </div>
+     </div>
+     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+      <img alt="Statue of Liberty in New York USA with city skyline and blue sky" class="w-full h-48 object-cover" height="250" src="https://storage.googleapis.com/a1aa/image/ef80899f-c629-4b58-1844-ee5f940bb195.jpg" width="400"/>
+      <div class="p-4">
+       <h3 class="text-xl font-semibold text-gray-800 mb-2">
+        New York, USA
+       </h3>
+       <p class="text-gray-600">
+        The city that never sleeps, full of energy and culture.
+       </p>
+      </div>
+     </div>
+     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+      <img alt="Tokyo cityscape at night Japan with bright neon lights and skyscrapers" class="w-full h-48 object-cover" height="250" src="https://storage.googleapis.com/a1aa/image/bf6a004a-eb26-4367-429c-88c192ffb708.jpg" width="400"/>
+      <div class="p-4">
+       <h3 class="text-xl font-semibold text-gray-800 mb-2">
+        Tokyo, Japan
+       </h3>
+       <p class="text-gray-600">
+        A perfect blend of tradition and futuristic innovation.
+       </p>
+      </div>
+     </div>
+     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+      <img alt="Sydney Opera House Australia with harbor and clear blue sky" class="w-full h-48 object-cover" height="250" src="https://storage.googleapis.com/a1aa/image/ce5e71c6-86a0-4c5e-cc3b-f1330fdf2951.jpg" width="400"/>
+      <div class="p-4">
+       <h3 class="text-xl font-semibold text-gray-800 mb-2">
+        Sydney, Australia
+       </h3>
+       <p class="text-gray-600">
+        Iconic architecture and beautiful coastal views.
+       </p>
+      </div>
+     </div>
+     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+      <img alt="Santorini Greece white buildings with blue domes overlooking the sea" class="w-full h-48 object-cover" height="250" src="https://storage.googleapis.com/a1aa/image/e06fa2f7-282b-4ad9-2ae8-626f9dfa0859.jpg" width="400"/>
+      <div class="p-4">
+       <h3 class="text-xl font-semibold text-gray-800 mb-2">
+        Santorini, Greece
+       </h3>
+       <p class="text-gray-600">
+        Stunning sunsets and charming cliffside villages.
+       </p>
+      </div>
+     </div>
+     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+      <img alt="Safari in Kenya with wild animals like lions and elephants in savannah" class="w-full h-48 object-cover" height="250" src="https://storage.googleapis.com/a1aa/image/736cb79a-5149-4e6d-a28e-27f48f015721.jpg" width="400"/>
+      <div class="p-4">
+       <h3 class="text-xl font-semibold text-gray-800 mb-2">
+        Kenya Safari
+       </h3>
+       <p class="text-gray-600">
+        Experience wildlife and breathtaking landscapes.
+       </p>
+      </div>
+     </div>
+     <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+      <img alt="Machu Picchu Peru ancient ruins on mountain with clouds and blue sky" class="w-full h-48 object-cover" height="250" src="https://storage.googleapis.com/a1aa/image/852e7543-caf3-4de7-0f8e-058673ca1522.jpg" width="400"/>
+      <div class="p-4">
+       <h3 class="text-xl font-semibold text-gray-800 mb-2">
+        Machu Picchu, Peru
+       </h3>
+       <p class="text-gray-600">
+        Explore the lost city of the Incas in the Andes.
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Featured Tours -->
+   <section class="mb-16" id="tours">
+    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+     Featured Tours
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+     <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col">
+      <img alt="Paris city tour with Eiffel Tower and tourists walking on street" class="w-full h-48 object-cover" height="350" src="https://storage.googleapis.com/a1aa/image/3f21961d-ba6f-45e3-a280-971ec6beda2c.jpg" width="600"/>
+      <div class="p-6 flex flex-col flex-grow">
+       <h3 class="text-2xl font-semibold text-gray-800 mb-3">
+        Paris City Tour
+       </h3>
+       <p class="text-gray-600 flex-grow mb-4">
+        Explore the romantic streets of Paris, visit the Eiffel Tower, Louvre Museum, and enjoy French cuisine.
+       </p>
+       <div class="mt-auto flex items-center justify-between">
+        <span class="text-indigo-600 font-bold text-xl">
+         $799
+        </span>
+        <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition font-semibold">
+         Book Now
+        </button>
+       </div>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col">
+      <img alt="Bali adventure tour with tropical beaches and palm trees" class="w-full h-48 object-cover" height="350" src="https://storage.googleapis.com/a1aa/image/429d2aad-c5f0-4e2b-55d5-22fe44c3fdf9.jpg" width="600"/>
+      <div class="p-6 flex flex-col flex-grow">
+       <h3 class="text-2xl font-semibold text-gray-800 mb-3">
+        Bali Adventure Tour
+       </h3>
+       <p class="text-gray-600 flex-grow mb-4">
+        Discover Bali’s beautiful beaches, waterfalls, and vibrant culture on this exciting adventure tour.
+       </p>
+       <div class="mt-auto flex items-center justify-between">
+        <span class="text-indigo-600 font-bold text-xl">
+         $999
+        </span>
+        <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition font-semibold">
+         Book Now
+        </button>
+       </div>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition flex flex-col">
+      <img alt="Safari tour in Kenya with wildlife animals like lions and elephants" class="w-full h-48 object-cover" height="350" src="https://storage.googleapis.com/a1aa/image/bbc4c29f-a633-41b8-9583-d28d79183887.jpg" width="600"/>
+      <div class="p-6 flex flex-col flex-grow">
+       <h3 class="text-2xl font-semibold text-gray-800 mb-3">
+        Kenya Safari Tour
+       </h3>
+       <p class="text-gray-600 flex-grow mb-4">
+        Experience the thrill of a safari in Kenya, spotting the Big Five and enjoying stunning landscapes.
+       </p>
+       <div class="mt-auto flex items-center justify-between">
+        <span class="text-indigo-600 font-bold text-xl">
+         $1,299
+        </span>
+        <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition font-semibold">
+         Book Now
+        </button>
+       </div>
+      </div>
+     </article>
+    </div>
+   </section>
+   <!-- How It Works -->
+   <section class="mb-16 bg-white rounded-lg shadow-md p-10">
+    <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">
+     How It Works
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+     <div>
+      <div class="mx-auto mb-6 w-20 h-20 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-4xl">
+       <i class="fas fa-search">
+       </i>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">
+       Search Tours
+      </h3>
+      <p class="text-gray-600 max-w-xs mx-auto">
+       Browse our wide selection of tours and destinations to find your perfect trip.
+      </p>
+     </div>
+     <div>
+      <div class="mx-auto mb-6 w-20 h-20 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-4xl">
+       <i class="fas fa-calendar-check">
+       </i>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">
+       Book Your Trip
+      </h3>
+      <p class="text-gray-600 max-w-xs mx-auto">
+       Select your dates, number of guests, and book your tour easily online.
+      </p>
+     </div>
+     <div>
+      <div class="mx-auto mb-6 w-20 h-20 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-4xl">
+       <i class="fas fa-plane-departure">
+       </i>
+      </div>
+      <h3 class="text-xl font-semibold mb-2">
+       Enjoy Your Journey
+      </h3>
+      <p class="text-gray-600 max-w-xs mx-auto">
+       Get ready for an unforgettable experience and create lasting memories.
+      </p>
+     </div>
+    </div>
+   </section>
+   <!-- Testimonials -->
+   <section class="mb-16">
+    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+     What Our Customers Say
+    </h2>
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+     <blockquote class="bg-white rounded-lg shadow-md p-6 flex flex-col">
+      <p class="text-gray-700 mb-6 flex-grow">
+       "Tourify made booking my trip to Bali so easy and stress-free. The tour was amazing and the guides were fantastic!"
+      </p>
+      <div class="flex items-center space-x-4">
+       <img alt="Portrait of a smiling woman with short brown hair and glasses" class="w-14 h-14 rounded-full object-cover" height="60" src="https://storage.googleapis.com/a1aa/image/fccbaba4-c4b4-413d-dfce-8e405c89bc55.jpg" width="60"/>
+       <div>
+        <p class="font-semibold text-gray-900">
+         Jessica D.
+        </p>
+        <p class="text-indigo-600 text-sm">
+         Travel Enthusiast
+        </p>
+       </div>
+      </div>
+     </blockquote>
+     <blockquote class="bg-white rounded-lg shadow-md p-6 flex flex-col">
+      <p class="text-gray-700 mb-6 flex-grow">
+       "The Kenya Safari tour was a dream come true. The booking process was smooth and the customer service was excellent."
+      </p>
+      <div class="flex items-center space-x-4">
+       <img alt="Portrait of a smiling man with short black hair and beard" class="w-14 h-14 rounded-full object-cover" height="60" src="https://storage.googleapis.com/a1aa/image/499e9b94-7384-4e4f-5bd5-ba3ff42a2488.jpg" width="60"/>
+       <div>
+        <p class="font-semibold text-gray-900">
+         Michael S.
+        </p>
+        <p class="text-indigo-600 text-sm">
+         Wildlife Photographer
+        </p>
+       </div>
+      </div>
+     </blockquote>
+     <blockquote class="bg-white rounded-lg shadow-md p-6 flex flex-col">
+      <p class="text-gray-700 mb-6 flex-grow">
+       "I loved the Paris City Tour! Everything was well organized and the guides were very knowledgeable."
+      </p>
+      <div class="flex items-center space-x-4">
+       <img alt="Portrait of a smiling woman with long blonde hair and blue eyes" class="w-14 h-14 rounded-full object-cover" height="60" src="https://storage.googleapis.com/a1aa/image/92da8885-483d-4120-ad1e-094805e6284c.jpg" width="60"/>
+       <div>
+        <p class="font-semibold text-gray-900">
+         Anna L.
+        </p>
+        <p class="text-indigo-600 text-sm">
+         Culture Lover
+        </p>
+       </div>
+      </div>
+     </blockquote>
+    </div>
+   </section>
+   <!-- Newsletter Signup -->
+   <section class="bg-indigo-600 rounded-lg p-10 text-center text-white mb-20">
+    <h2 class="text-3xl font-bold mb-4">
+     Stay Updated with Tourify
+    </h2>
+    <p class="mb-6 max-w-xl mx-auto">
+     Subscribe to our newsletter to get the latest tour deals, travel tips, and inspiration.
+    </p>
+    <form class="max-w-xl mx-auto flex flex-col sm:flex-row gap-4">
+     <input class="flex-grow px-4 py-3 rounded text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-400" placeholder="Enter your email" required="" type="email"/>
+     <button class="bg-yellow-400 text-indigo-900 font-bold px-6 py-3 rounded hover:bg-yellow-300 transition" type="submit">
+      Subscribe
+     </button>
+    </form>
+   </section>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-12">
+   <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+    <div>
+     <h3 class="text-white text-xl font-bold mb-4">
+      Tourify
+     </h3>
+     <p class="text-gray-400 max-w-xs">
+      Your trusted partner for unforgettable travel experiences worldwide.
+     </p>
+     <div class="flex space-x-4 mt-6">
+      <a aria-label="Facebook" class="hover:text-white" href="#">
+       <i class="fab fa-facebook fa-lg">
+       </i>
+      </a>
+      <a aria-label="Twitter" class="hover:text-white" href="#">
+       <i class="fab fa-twitter fa-lg">
+       </i>
+      </a>
+      <a aria-label="Instagram" class="hover:text-white" href="#">
+       <i class="fab fa-instagram fa-lg">
+       </i>
+      </a>
+      <a aria-label="LinkedIn" class="hover:text-white" href="#">
+       <i class="fab fa-linkedin fa-lg">
+       </i>
+      </a>
+     </div>
+    </div>
+    <div>
+     <h4 class="text-white font-semibold mb-4">
+      Company
+     </h4>
+     <ul class="space-y-2">
+      <li>
+       <a class="hover:text-white" href="#">
+        About Us
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-white" href="#">
+        Careers
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-white" href="#">
+        Blog
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-white" href="#">
+        Press
+       </a>
+      </li>
+     </ul>
+    </div>
+    <div>
+     <h4 class="text-white font-semibold mb-4">
+      Support
+     </h4>
+     <ul class="space-y-2">
+      <li>
+       <a class="hover:text-white" href="#">
+        Help Center
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-white" href="#">
+        Cancellation Options
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-white" href="#">
+        Safety Information
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-white" href="#">
+        Contact Us
+       </a>
+      </li>
+     </ul>
+    </div>
+    <div>
+     <h4 class="text-white font-semibold mb-4">
+      Legal
+     </h4>
+     <ul class="space-y-2">
+      <li>
+       <a class="hover:text-white" href="#">
+        Terms of Service
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-white" href="#">
+        Privacy Policy
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-white" href="#">
+        Cookie Policy
+       </a>
+      </li>
+     </ul>
+    </div>
+   </div>
+   <div class="mt-12 text-center text-gray-500 text-sm">
+    © 2024 Tourify. All rights reserved.
+   </div>
+  </footer>
+  <script>
+   const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+ </body>
+</html>
